@@ -50,6 +50,6 @@ static Tile Winter("Winter", 0);
 static Tile Plum("Plum", 0);
 static Tile Orchid("Orchid", 0);
 static Tile Chrysanthemum("Chrysanthemum", 0);
-static Tile Bamboo("Bamboo", 0);
+static Tile Bamboo("BambooFlower", 0);
 
 #endif
