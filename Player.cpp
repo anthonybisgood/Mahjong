@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "Hand.cpp"
 
@@ -34,8 +35,6 @@ class Player {
         this->score = score;
         this->hand = Hand();
         this->deadHand = Hand();
-        this->position = position;
-        this->numFlowers = 0;
     }
 
     /**
@@ -74,6 +73,36 @@ class Player {
         addToDeadHand(t1);
         addToDeadHand(t2);
         addToDeadHand(t);
+        return true;
+    }
+
+    bool pong(Tile& t) {
+        int numElements = hand.getCount(t);
+        if (numElements < 3) {
+            return false;
+        }
+        int threeLeft = 3;
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i) == t && threeLeft > 0) {
+                addToDeadHand(hand.get(i));
+                threeLeft -= 1;
+            }
+        }
+        return true;
+    }
+
+    bool kong(Tile& t) {
+        int numElements = hand.getCount(t);
+        if (numElements < 4) {
+            return false;
+        }
+        int fourLeft = 4;
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i) == t && fourLeft > 0) {
+                addToDeadHand(hand.get(i));
+                fourLeft -= 1;
+            }
+        }
         return true;
     }
 

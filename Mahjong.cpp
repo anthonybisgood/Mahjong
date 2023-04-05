@@ -65,7 +65,8 @@ class Mahjong {
                 
             // pong
             } else if (action == "p") {
-            
+                p.addTile(lastTile);
+                bool canPong = p.pong(lastTile);
             // kong
             } else if (action == "k") {
                 
@@ -87,12 +88,15 @@ class Mahjong {
         cout << "Second tile you want to chi with: " << endl;
         int secondTileIndex;
         cin >> secondTileIndex;
-        p.chi(firstTileIndex, secondTileIndex, lastTile);
-        // check if the player has the tiles to chi
+        bool canChi = p.chi(firstTileIndex, secondTileIndex, lastTile);
+        return canChi;
+    }
+
+    bool pongAction(Player& p, Tile& lastTile) {
+        // check if the player has the tiles to pong
         // if they do, remove the tiles from the player's hand and add it to players dead hand
-
-
-        return true;
+        bool canPong = p.pong(lastTile);
+        return canPong;
     }
 
    public:

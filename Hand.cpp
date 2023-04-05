@@ -80,6 +80,17 @@ class Hand {
         hand.clear();
     }
 
+    /**
+     * @brief returns the count of elements that equal t 
+     * 
+     * @param t 
+     * @return int 
+     */
+    int getCount(const Tile& t) {
+        int numOfElements = count(hand.begin(), hand.end(), t);
+        return numOfElements;
+    }
+
     string toString() const {
         string res = "[";
         if (hand.size() == 0) {
